@@ -2,6 +2,12 @@ import streamlit as st
 
 st.set_page_config("Graphics Collision using CV2 in Python")
 st.title("Graphics Collision using CV2 - by Youssef Belal", text_alignment="center")
+st.markdown("""
+Hi there! I'm Youssef Belal, and this is a little project I made that tests ball collision using the CV2 module and Mediapipe's Tasks 
+API in Python. I had a lot of fun making it, and I hope you enjoy testing it :). 
+            
+I'm 14 years old, and have been learning Python for more than a year now. 
+Although this project itself is impressive, I still wish to learn and improve beyond it.""")
 
 with open("physics_using_cv2.py") as code:
     st.code(code.read())
