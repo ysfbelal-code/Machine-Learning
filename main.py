@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config("Graphics Collision Detection + Hand Landmarks using CV2")
-st.title("Graphics Collision Detection + Handusing CV2 - by Youssef Belal", text_alignment="center")
+st.title("Graphics Collision Detection + Hand Landmarks using CV2 - by Youssef Belal", text_alignment="center")
 st.markdown("""
 Hi there! I'm Youssef Belal, and this is a little project I made that tests ball collision detection using the CV2 module and Mediapipe's Tasks 
 API in Python. I had a lot of fun making it, and I hope you enjoy testing it :). 
