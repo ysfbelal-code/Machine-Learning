@@ -8,7 +8,7 @@ API in Python. It detects your hand landmarks, and allows you to play around wit
 I had a lot of fun making it, and I hope you enjoy testing it :). 
             
 I'm 14 years old, and have been learning Python for more than a year now. 
-Although this project itself is impressive, I still wish to learn and improve beyond it.""")
+Although this project itself is impressive, I still wish to learn and improve beyond it. Anyways, here's the project with explanations:""")
 
 with open("physics_using_cv2.py") as code:
     st.code(code.read())
