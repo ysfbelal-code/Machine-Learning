@@ -38,7 +38,7 @@ def closest_point_on_segment(px, py, ax, ay, bx, by):
         return ax, ay
     t = max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
     return ax + t * dx, ay + t * dy
-        
+
 # Setting up the hand landmarks. 
 # Keep in mind that mediapipe.solutions is now deprecated, 
 # so you must use mediapipe.tasks for hand landmarks
@@ -48,7 +48,7 @@ landmarker = HandLandmarker.create_from_options(HandLandmarkerOptions(
     running_mode=RunningMode.VIDEO,
     num_hands=2,
 ))
-        
+
 # Setting up the camera and frame
 
 cam = cv2.VideoCapture(0)
@@ -57,11 +57,13 @@ if not cam: print("Error: couldn't connect camera...")
 frame_idx = 0
 while True:
     ret, frame = cam.read()
-    if not ret: print("Error: frame not read...")
-        
+    if not ret:
+        print("Error: frame not read. Exiting loop.")
+        break
+
     # Creating ball, movement, x+y coordinate limits
     # and collision logic
-    
+
     cv2.circle(frame, (int(X_COR), int(Y_COR)), BALL_R, (255, 0, 0), -1)
     X_COR += X_INCREMENT
     Y_COR += Y_INCREMENT
@@ -71,10 +73,10 @@ while True:
 
     if X_COR >= 600 and X_INCREMENT > 0 or X_COR <= 40 and X_INCREMENT < 0:
         X_INCREMENT = bounce(X_INCREMENT)
-        
+
     # Displaying of landmarks and collision detection with them. 
     # Mediapipe expects an RGB image to work, so color conversion is a MUST
-        
+
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=img_rgb)
     results = landmarker.detect_for_video(mp_image, frame_idx)
@@ -94,6 +96,9 @@ while True:
         for p in pts:
             cv2.circle(frame, p, 4, (0, 0, 255), -1)
 
+    # Collision detection logic - looks for the 
+    # closest landmark to the blue ball
+
     if nearest_d <= BALL_R:
         nx, ny = X_COR - nearest_cx, Y_COR - nearest_cy
         n_len = nearest_d if nearest_d > 1e-6 else 1.0
@@ -108,11 +113,11 @@ while True:
         if overlap > 0:
             X_COR += nx * overlap
             Y_COR += ny * overlap
-        
-        # Displaying the webcam frames and exitting logic
-        cv2.imshow("Annoying circle", frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-        
-cam.release()
-cv2.destroyAllWindows() 
+
+    # Displaying the webcam frames
+    
+    cv2.imshow("Annoying circle", frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cv2.destroyAllWindows()
