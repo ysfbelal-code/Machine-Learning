@@ -21,4 +21,4 @@ st.markdown("That's the project! Because of the new Tasks API that I mentioned e
 "detection using mediapipe.solutions are all outdated. As far as I know, this is the only project in the web " \
 "that uses the Tasks API for hand landmark detection.")
 
-st.page_link("https://ai.google.dev/edge/mediapipe/solutions/tasks", label="To learn more about Mediapipe Tasks, click here...")
+st.page_link("https://ai.google.dev/edge/mediapipe/solutions/tasks", label="To learn more about Mediapipe Tasks, click me...")
