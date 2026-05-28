@@ -15,7 +15,7 @@ with open("physics_using_cv2.py") as code:
     st.code(code.read())
 
 st.text("Output:")
-st.video(r"Graphics Collision Detection\output.mp4")
+st.video(r"output.mp4")
 st.markdown("That's the project! Because of the new Tasks API that I mentioned earlier, " \
 "all other websites for projects involving hand landmark "
 "detection using mediapipe.solutions are all outdated. As far as I know, this is the only project in the web " \
