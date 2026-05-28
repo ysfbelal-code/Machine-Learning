@@ -9,7 +9,7 @@ I had a lot of fun making it, and I hope you enjoy testing it :).
             
 I'm 14 years old, and have been learning Python for more than a year now. 
 Although this project itself is impressive, I still wish to learn and improve beyond it. Anyways, here's what you need for this project:""")
-with open("Graphics Collision Detection/hand_landmarker.task", "rb") as task_file:
+with open("hand_landmarker.task", "rb") as task_file:
     st.download_button("Download hand_landmarker.task from Google AI for Developers (NECESSARY FOR THIS PROJECT)", data=task_file, file_name="hand_landmarker.task")
 with open("physics_using_cv2.py") as code:
     st.code(code.read())
